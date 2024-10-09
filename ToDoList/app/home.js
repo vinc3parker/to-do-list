@@ -1,67 +1,78 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, TextInput, Button, StyleSheet} from 'react-native';
-import Task from '../components/Task';
+import { SafeAreaView, View, ScrollView, Text, StyleSheet} from 'react-native';
+import Task  from '../components/TaskCard/Task';
+import { Stack, useRouter } from "expo-router";
 
-export default function HomeScreen() {
+const Home = () => {
     const [tasks, setTasks] = useState([
-        { id: 1, name: 'Buy groceries', completed: false },
-        { id: 2, name: 'Complete project', completed: true },
+      {
+        id: 1,
+        name: "Clean Room",
+        status: "current",
+        category: "Daily",
+        time: 20,
+        icon: "calendar",
+        iconColor: "#FFC107",
+      },
+      {
+        id: 2,
+        name: "Write Project Report",
+        status: "current",
+        category: "Projects",
+        time: 45,
+        icon: "group",
+        iconColor: "#3949AB",
+      },
+      {
+        id: 3,
+        name: "Do Washing",
+        status: "current",
+        category: "Daily",
+        time: 10,
+        icon: "calendar",
+        iconColor: "#FFC107",
+      },
+      {
+        id: 4,
+        name: "Buy Bananas",
+        status: "current",
+        category: "Daily",
+        time: 15,
+        icon: "shopping-cart",
+        iconColor: "#4CAF50",
+      },
     ]);
 
-    const [newTaskName, setNewTaskName] = useState('');
-
-    const toggleTaskCompletion = (taskId) => {
-        setTasks(tasks.map(task =>
-            task.id === taskId ? { ...task, completed: !task.completed } : task
-        ));
-    };
-
-    const addTask = () => {
-        if (newTaskName.trim()) {
-            setTasks([...tasks, { id: tasks.lenght + 1, name: newTaskname, completed: false }]);
-            setNewTaskName('');
-        }
-    };
-
-
-    return (
-      <View style={{ flex: 1 }}>
-        <ScrollView style={{ flex: 1 }}>
-          <Text style={{ fontSize: 24, padding: 16 }}>Tasks</Text>
-          {tasks.map((task) => (
-            <Task
-              key={task.id}
-              taskName={task.name}
-              isComplete={task.completed}
-              onCompleteTask={() => toggleTaskCompletion(task.id)}
-            />
-          ))}
-        </ScrollView>
-        
-        <View style={StyleSheet.footer}>
-            <TextInput style={StyleSheet.input} placeholder="New Task" value={newTaskName} onChangeText={setNewTaskName} />
-            <Button title="Add Task" onPress={addTask} />
-        </View>
-      </View>
+  const currentTasks = tasks.filter(task => task.status === 'current');
+  
+  const onCompleteTask = (taskToComplete) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskToComplete.id ? { ...task, status: "complete" } : task
+      )
     );
+  };
+
+  const onRemoveTask = (taskToRemove) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== taskToRemove.id));
+  };
+
+  return (
+    <SafeAreaView style={{ flex: 1}}>
+      <ScrollView style={{ flex: 1}}>
+        <Text style={{ fontSize: 24, padding: 16 }}>Tasks</Text>
+        
+        {currentTasks.map((task) => (
+          <Task
+            key={task.id}
+            task={task}
+            onCompleteTask={onCompleteTask}
+            onRemoveTask={onRemoveTask}
+          />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
-const styles = StyleSheet.create({
-    footer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 16,
-        borderTopWidth: 1,
-        borderTopColor: '#ccc',
-        backgroundColor: '#fff',
-    },
-    input: {
-        flex: 1,
-        padding: 8,
-        borderWidth: 1,
-        borderColor: '#ddd',
-        marginRight: 8,
-        borderRadius: 4,
-    },
-});
+export default Home;
