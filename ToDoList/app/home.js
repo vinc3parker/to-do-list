@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, ScrollView, Text, StyleSheet} from 'react-native';
-import Task  from '../components/TaskCard/Task';
+import Task from '../components/TaskCard/Task';
+import Footer from '../components/FooterMenu/Footer';
 import { Stack, useRouter } from "expo-router";
 
 const Home = () => {
@@ -58,10 +59,17 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1}}>
-      <ScrollView style={{ flex: 1}}>
-        <Text style={{ fontSize: 24, padding: 16 }}>Tasks</Text>
-        
+    <SafeAreaView style={{ flex: 1 }}>
+      <View>
+        <Text>Info Cards</Text>
+      </View>
+      <View>
+        <Text>Progress Bar</Text>
+      </View>
+      <View>
+        <Text>Current Tasks</Text>
+      </View>
+      <ScrollView style={{ flex: 1 }}>
         {currentTasks.map((task) => (
           <Task
             key={task.id}
