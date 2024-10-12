@@ -2,24 +2,34 @@ import { Dimensions, StyleSheet, Text, View } from "react-native";
 import react from "react";
 import { LinearGradient } from 'expo-linear-gradient';
 
-const {width} = Dimensions.get('screen');
+const cardMargin = 10;
 
-const SliderCard = ({ item, index }) => {
+const SliderCard = ({ item, index, width }) => {
+    
+    const cardWidth = width * 0.9;
+    
     return (
-        <View style={[styles.card, { backgroundColor: item.color }]}>
+        <View style={[styles.card, { backgroundColor: item.color, width: cardWidth, }]}>
             <Text>{item.title}</Text>
+            <Text>{index}</Text>
         </View>
     )
 };
 
 const styles = StyleSheet.create({
     card: {
-        padding: 20,
+        flex: 1,
+        marginHorizontal: cardMargin,
+        padding: 16,
         borderRadius: 16,
-        width: (width),
-        height: 200,
+        height: 'flex',
         backgroundColor: 'blue',
         borderColor: 'black',
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: {width: 0 , height: 2},
+        shadowRadius: 8,
+        elevation: 5,
     },
 });
 

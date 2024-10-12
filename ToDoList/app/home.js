@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   overviewSection: {
     height: 300,
-    backgroundColor: 'red',
+    backgroundColor: '#fff',
   },
 })
 
