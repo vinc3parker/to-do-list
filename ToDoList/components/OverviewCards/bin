@@ -1,0 +1,100 @@
+import React, { useRef, useState } from 'react';
+import { View, FlatList, Animated, Text, StyleSheet } from 'react-native';
+
+const data = [
+  { id: 1, title: 'Routine', description: 'Hustle Time: 2 Hours', color: '#4CAF50' },
+  { id: 2, title: 'Productivity', description: 'You completed 5 tasks today', color: '#FF9800' },
+  { id: 3, title: 'Tasks', description: 'All tasks overview', color: '#F44336' },
+  { id: 4, title: 'Fitness', description: 'You worked out for 30 minutes', color: '#2196F3' },
+  { id: 5, title: 'Projects', description: '3 projects in progress', color: '#9C27B0' }
+];
+
+const Overview = () => {
+    const [scrollViewWidth, setScrollViewWidth] = useState(0)
+    const pan = useRef(new Animated.ValueXY()).current;
+    const boxWidth = scrollViewWidth * 0.8;
+    const boxDistance = scrollViewWidth - boxWidth;
+    const halfBoxDistance = boxDistance / 2;
+
+    const renderItem = ({ item, index }) => (
+        <Animated.View
+            style={{
+                transform: [
+                    {
+                        scale: pan.x.interpolate({
+                            inputRange: [
+                                (index - 1) * boxWidth - halfBoxDistance,
+                                index * boxWidth - halfBoxDistance,
+                                (index + 1) * boxWidth - halfBoxDistance,
+                            ],
+                        }),
+                    }
+                ],
+            }}
+        >
+            <View
+                style={{
+                    height: '100%',
+                    width: boxWidth,
+                    borderRadius: 24,
+                    backgroundColor: `rgba(${(index * 13) % 255}, ${(index * 35) % 255}, ${(index * 4) % 255}, .5)`,
+                }}
+            >
+                <Text>{item}</Text>
+            </View>
+        </Animated.View>
+    )
+
+    return (
+      <Animated.FlatList
+        data={data}
+        horizontal
+        style={{ backgroundColor: "#6B6B6B", height: 250 }}
+        contentContainerStyle={{ paddingVertical: 16 }}
+        contentInsetAdjustmentBehavior="never"
+        snapToAlignment="center"
+        decelerationRate="fast"
+        automaticallyAdjustContentInsets={false}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        scrollEventThrottle={1}
+        snapToInterval={boxWidth}
+        contentInset={{
+          left: halfBoxDistance,
+          right: halfBoxDistance,
+        }}
+        contentOffset={{ x: halfBoxDistance * -1, y: 0 }}
+        onLayout={(e) => {
+            setScrollViewWidth(e.nativeEvent.layout.width);
+        }}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: pan.x } } }],
+          { useNativeDriver: false },
+        )}
+        keyExtractor={(item, index) => `${index}-${item}`}
+        renderItem={renderItem}
+      />
+    );
+};
+
+const styles = StyleSheet.create({
+    scroll: {
+        paddingVertical: 10,
+    },
+    card: {
+        width: 250,
+        height: 250,
+        padding: 20,
+        alignItems: 'cener',
+        marginHorizonal: 20,
+        backgroundColor: '#F0F0F0',
+        borderRadius: 10,
+    },
+    cardTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+});
+
+export default Overview;
