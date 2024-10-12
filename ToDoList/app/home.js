@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, ScrollView, Text, StyleSheet} from 'react-native';
 import Task from '../components/TaskCard/Task';
-import Footer from '../components/FooterMenu/Footer';
+import ProductivityChart from '../components/ProductivityCard/ProductivityCard';
+import TaskCounter from '../components/ProgressCard/ProgressCard';
+import Slider from '../components/OverviewCards/Slider'
 import { Stack, useRouter } from "expo-router";
 
 const Home = () => {
@@ -60,14 +62,12 @@ const Home = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View>
-        <Text>Info Cards</Text>
+      <View style={styles.overviewSection}>
+        <Slider />
       </View>
-      <View>
-        <Text>Progress Bar</Text>
-      </View>
-      <View>
-        <Text>Current Tasks</Text>
+      <View style={styles.productivitySection}>
+        <ProductivityChart />
+        <TaskCounter tasksLeft={5}/>
       </View>
       <ScrollView style={{ flex: 1 }}>
         {currentTasks.map((task) => (
@@ -82,5 +82,15 @@ const Home = () => {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  productivitySection: {
+    flexDirection: 'row',
+  },
+  overviewSection: {
+    height: 300,
+    backgroundColor: 'red',
+  },
+})
 
 export default Home;
