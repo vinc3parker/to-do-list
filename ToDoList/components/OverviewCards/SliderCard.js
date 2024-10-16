@@ -6,7 +6,7 @@ const cardMargin = 10;
 
 const SliderCard = ({ item, index, width }) => {
     
-    const cardWidth = width * 0.9;
+    const cardWidth = width;
     
     return (
         <View style={[styles.card, { backgroundColor: item.color, width: cardWidth, }]}>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
         borderColor: 'black',
         shadowColor: '#000',
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.4,
         shadowOffset: {width: 0 , height: 2},
         shadowRadius: 8,
         elevation: 5,

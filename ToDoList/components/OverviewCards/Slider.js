@@ -1,4 +1,4 @@
-import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, FlatList, StyleSheet, View, Animated } from 'react-native';
 import React, { useRef } from 'react';
 import SliderCard from './SliderCard';
 
@@ -43,18 +43,49 @@ const loopedCards = [
     Cards[1],
 ];
 
+const renderItem = ({ item, index }, scrollX, totalCardWidth) => {
+    // Calculate card position relative to the scrollX value
+    const inputRange = [
+        (index - 2) * totalCardWidth,
+        index * totalCardWidth,
+        (index + 2) * totalCardWidth,
+    ];
+    const scale = scrollX.interpolate({
+        inputRange,
+        outputRange: [0.8, 1, 0.8],
+        extrapolate: 'clamp',
+    });
+    return (
+        <Animated.View
+            style={[
+                styles.cardContainer,
+                { width: cardWidth, transform: [{ scale }] },
+            ]}
+        >
+            <SliderCard item={item} index={index} width={cardWidth} />
+        </Animated.View>
+    );
+};
+
 const Slider = () => {
     const flatListRef = useRef(null);
+    const scrollX = useRef(new Animated.Value(0)).current;
+    const totalCardWidth = cardWidth + cardMargin * 2;
+    const totalWidth = totalCardWidth * Cards.length;
 
     const handleScroll = (event) => {
         const contentOffsetX = event.nativeEvent.contentOffset.x;
-        const totalCardWidth = cardWidth + cardMargin * 2;
-        const totalWidth = totalCardWidth * Cards.length;
 
         if (contentOffsetX >= totalWidth + totalCardWidth * 2) {
-            flatListRef.current.scrollToOffset({
-                offset: contentOffsetX - totalWidth,
-                animated: false,
+            Animated.timing(scrollX, {
+                toValue: contentOffsetX - totalWidth,
+                duration: 300,
+                useNativeDriver: true,
+            }).start(() => {
+                flatListRef.current.scrollToOffset({
+                    offset: contentOffsetX - totalWidth,
+                    animated: false,
+                });
             });
         }
 
@@ -63,29 +94,44 @@ const Slider = () => {
                 offset: contentOffsetX + totalWidth,
                 animated: false,
             });
+
+            Animated.timing(scrollX, {
+                toValue: contentOffsetX - totalWidth,
+                duration: 1000,
+                useNativeDriver: true,
+            }).start();
         }
     };
 
+    const handleScrollEnd = (event) => {
+        const contentOffsetX = event.nativeEvent.conentOffset.x;        
+        const closestIndex = Math.round(contentOffsetX / totalCardWidth);
+        const newOffset = closestIndex * totalCardWidth;
+
+        flatListRef.current.scrollToOffset({
+            offset: newOffset,
+            animated: true,
+        });
+    };
+
     return (
-        <FlatList
+        <Animated.FlatList
             ref={flatListRef}
             data={loopedCards}
             horizontal={true}
-            
+            snapToAlignment={'center'}
             showsHorizontalScrollIndicator={false}
-            pagingEnabled={false}
-            decelerationRate='fast'
-            snapToInterval={cardWidth + cardMargin * 2}
-            snapToAlignment='center'
+            decelerationRate='normal'
             getItemLayout={getItemLayout}
             initialScrollIndex={Cards.length}
-            onScroll={handleScroll}
-            scrollEventThrottle={16}
-            renderItem={({ item, index }) => (
-                <View style={[styles.cardContainer, { width: cardWidth }]}>
-                    <SliderCard item={item} index={index} width={cardWidth} />
-                </View>
+            snapToInterval={totalCardWidth}
+            onMomentumScrollEnd={handleScrollEnd}
+            onScroll={Animated.event(
+                [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+                { useNativeDriver: true, listener: handleScroll }
             )}
+            scrollEventThrottle={128}
+            renderItem={({ item, index }) => renderItem({ item, index }, scrollX, totalCardWidth)}
             keyExtractor={(item, index) => `${item.id}-${index}`}
             contentContainerStyle={{
                 paddingHorizontal: (width - cardWidth) / 2 - cardMargin,  // Center the cards
