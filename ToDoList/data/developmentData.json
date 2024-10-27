@@ -1,0 +1,103 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "title": "Write Documentation",
+            "status": "current",
+            "timeCompleted": null,
+            "lengthOfTask": 120, 
+            "timeToComplete": null,
+            "icon": "calendar",
+            "group": "daily"
+        },
+        {
+            "id": 2,
+            "title": "Team Meeting",
+            "status": "complete",
+            "timeCompleted": "2024-10-12T09:30:00Z",
+            "lengthOfTask": 60,
+            "timeToComplete": 55,
+            "icon": "calendar",
+            "group": "daily"
+        },
+        {
+            "id": 3,
+            "title": "Code Review",
+            "status": "paused",
+            "timeCompleted": null,
+            "lengthOfTask": 90,
+            "timeToComplete": null,
+            "icon": "calendar",
+            "group": "daily"
+        },
+        {
+            "id": 4,
+            "title": "Design UI Mockups",
+            "status": "complete",
+            "timeCompleted": "2024-10-11T16:00:00Z",
+            "lengthOfTask": 180,
+            "timeToComplete": 175,
+            "icon": "calendar",
+            "group": "daily"
+        },
+        {
+            "id": 5,
+            "title": "Plan Sprint Tasks",
+            "status": "current",
+            "timeCompleted": null,
+            "lengthOfTask": 45,
+            "timeToComplete": null,
+            "icon": "calendar",
+            "group": "daily"
+        },
+        {
+            "id": 6,
+            "title": "Update User Stories",
+            "status": "paused",
+            "timeCompleted": null,
+            "lengthOfTask": 30,
+            "timeToComplete": null,
+            "icon": "calendar"
+        },
+        {
+            "id": 7,
+            "title": "Fix UI Bugs",
+            "status": "current",
+            "timeCompleted": null,
+            "lengthOfTask": 60,
+            "timeToComplete": null,
+            "icon": "calendar",
+            "group": "daily"
+        },
+        {
+            "id": 8,
+            "title": "Write Unit Tests",
+            "status": "current",
+            "timeCompleted": null,
+            "lengthOfTask": 90,
+            "timeToComplete": null,
+            "icon": "calendar",
+            "group": "daily"
+        },
+        {
+            "id": 9,
+            "title": "Optimize Database",
+            "status": "current",
+            "timeCompleted": null,
+            "lengthOfTask": 120,
+            "timeToComplete": null,
+            "icon": "calendar",
+            "group": "daily"
+        },
+        {
+            "id": 10,
+            "title": "Prepare Presentation",
+            "status": "current",
+            "timeCompleted": null,
+            "lengthOfTask": 180,
+            "timeToComplete": null,
+            "icon": "calendar",
+            "group": "daily"
+        }
+    ]
+}

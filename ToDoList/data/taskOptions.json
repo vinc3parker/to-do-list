@@ -1,0 +1,120 @@
+{
+    "categories": [
+        "Daily",
+        "Health"
+    ]
+    "icons": {
+        "health": [
+            {
+                "name": "Exercise",
+                "icon": "fa-dumbbell"
+            },
+            {
+                "name": "Meditation",
+                "icon": "fa-spa"
+            },
+            {
+                "name": "Doctor Appointment",
+                "icon": "fa-stethoscope"
+            },
+            {
+                "name": "Meal Plan",
+                "icon": "fa-utensils"
+            },
+            {
+                "name": "Sleep",
+                "icon": "fa-bed"
+            }
+        ],
+        "work": [
+            {
+                "name": "Meeting",
+                "icon": "fa-users"
+            },
+            {
+                "name": "Coding",
+                "icon": "fa-code"
+            },
+            {
+                "name": "Presentation",
+                "icon": "fa-chart-line"
+            },
+            {
+                "name": "Design",
+                "icon": "fa-pencil-ruler"
+            },
+            {
+                "name": "Deadline",
+                "icon": "fa-calendar-alt"
+            }
+        ],
+        "general": [
+            {
+                "name": "Shopping",
+                "icon": "fa-shopping-cart"
+            },
+            {
+                "name": "House Chores",
+                "icon": "fa-broom"
+            },
+            {
+                "name": "Reading",
+                "icon": "fa-book"
+            },
+            {
+                "name": "Travel",
+                "icon": "fa-plane"
+            },
+            {
+                "name": "Leisure",
+                "icon": "fa-music"
+            }
+        ],
+        "education": [
+            {
+                "name": "Study",
+                "icon": "fa-book-reader"
+            },
+            {
+                "name": "Assignment",
+                "icon": "fa-file-alt"
+            },
+            {
+                "name": "Lecture",
+                "icon": "fa-chalkboard-teacher"
+            },
+            {
+                "name": "Library",
+                "icon": "fa-university"
+            }
+        ],
+        "finance": [
+            {
+                "name": "Bill Payment",
+                "icon": "fa-money-check-alt"
+            },
+            {
+                "name": "Budgeting",
+                "icon": "fa-wallet"
+            },
+            {
+                "name": "Investment",
+                "icon": "fa-chart-pie"
+            }
+        ],
+        "wellbeing": [
+            {
+                "name": "Self-care",
+                "icon": "fa-heart"
+            },
+            {
+                "name": "Mental Health",
+                "icon": "fa-brain"
+            },
+            {
+                "name": "Relaxation",
+                "icon": "fa-coffee"
+            }
+        ]
+    }
+}

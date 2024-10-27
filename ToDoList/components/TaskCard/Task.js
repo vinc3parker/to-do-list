@@ -6,7 +6,9 @@ import { StyleSheet } from "react-native";
 import { FontAwesome } from '@expo/vector-icons'
 
 const Task = ({ task, onCompleteTask, onRemoveTask }) => {
-    const handleSwipeOpen = (direction) => {
+  console.log(task.icon)  
+  
+  const handleSwipeOpen = (direction) => {
       if (direction === "left") {
         onCompleteTask(task);
       } else if (direction === 'right') {
@@ -47,11 +49,11 @@ const Task = ({ task, onCompleteTask, onRemoveTask }) => {
                         <FontAwesome name={task.icon} size={32} color={'#000'} />
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={styles.taskName}>{task.name}</Text>
-                        <Text style={styles.taskCategory}>{task.category}</Text>
+                        <Text style={styles.taskName}>{task.title}</Text>
+                        <Text style={styles.taskCategory}>{task.group}</Text>
                     </View>
                     <View style={styles.timeContainer}>
-                        <Text style={styles.timeText}>{task.time} mins</Text>
+                        <Text style={styles.timeText}>{task.lengthOfTask} mins</Text>
                     </View>
                 </View>
             </Swipeable>

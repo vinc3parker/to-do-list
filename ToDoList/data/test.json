@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1, 
+        "name": "Task One",
+        "category": "Work",
+        "Due Date": "2024-11-01",
+        "icon": "pencil"
+    },
+    {
+        "id": 2,
+        "name": "Task Two",
+        "category": "Personal",
+        "Due Date": "2024-11-02",
+        "icon": "calendar"
+    },
+    {
+        "id": 3,
+        "name": "Task Three",
+        "category": "Health",
+        "Due Date": "2024-11-04",
+        "icon": "heart"
+    }
+
+]

@@ -12,6 +12,7 @@ const TaskCounter = ({ tasksLeft }) => {
 
 const styles = StyleSheet.create({
     counterContainer: {
+        marginLeft: 20,
         padding: 20,
         alignItems: 'center',
         backgroundColor: '#E0E0E0',
