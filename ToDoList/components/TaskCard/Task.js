@@ -2,8 +2,9 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { Swipeable, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StyleSheet } from "react-native";
-
 import { FontAwesome } from '@expo/vector-icons'
+
+import Icon from '../utils/icon';
 
 const Task = ({ task, onCompleteTask, onRemoveTask }) => {
   console.log(task.icon)  
@@ -46,7 +47,7 @@ const Task = ({ task, onCompleteTask, onRemoveTask }) => {
             >
                 <View style={styles.card}>
                     <View style={[styles.iconContainer, { backgroundColor: task.iconColor }]}>
-                        <FontAwesome name={task.icon} size={32} color={'#000'} />
+                        <Icon iconName={task.icon} size={32} color={'#000'} />
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={styles.taskName}>{task.title}</Text>

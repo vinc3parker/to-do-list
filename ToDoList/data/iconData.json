@@ -3,114 +3,130 @@
         "health": [
             {
                 "name": "Exercise",
-                "icon": "fa-dumbbell"
+                "icon": "dumbbell"
             },
             {
                 "name": "Meditation",
-                "icon": "fa-spa"
+                "icon": "meditation"
             },
             {
                 "name": "Doctor Appointment",
-                "icon": "fa-stethoscope"
+                "icon": "stethoscope"
             },
             {
                 "name": "Meal Plan",
-                "icon": "fa-utensils"
+                "icon": "utensils"
             },
             {
                 "name": "Sleep",
-                "icon": "fa-bed"
+                "icon": "bed"
+            },
+            {
+                "name": "Spa",
+                "icon": "spa"
             }
         ],
         "work": [
             {
                 "name": "Meeting",
-                "icon": "fa-users"
+                "icon": "users"
             },
             {
                 "name": "Coding",
-                "icon": "fa-code"
+                "icon": "code"
             },
             {
                 "name": "Presentation",
-                "icon": "fa-chart-line"
+                "icon": "chart-line"
             },
             {
                 "name": "Design",
-                "icon": "fa-pencil-ruler"
+                "icon": "pencil-ruler"
             },
             {
                 "name": "Deadline",
-                "icon": "fa-calendar-alt"
+                "icon": "calendar-alt"
+            },
+            {
+                "name": "Email",
+                "icon": "envelope"
             }
         ],
         "general": [
             {
                 "name": "Shopping",
-                "icon": "fa-shopping-cart"
+                "icon": "shopping-cart"
             },
             {
                 "name": "House Chores",
-                "icon": "fa-broom"
+                "icon": "broom"
             },
             {
                 "name": "Reading",
-                "icon": "fa-book"
+                "icon": "book"
             },
             {
                 "name": "Travel",
-                "icon": "fa-plane"
+                "icon": "plane"
             },
             {
                 "name": "Leisure",
-                "icon": "fa-music"
+                "icon": "music"
+            },
+            {
+                "name": "Calendar",
+                "icon": "calendar"
             }
         ],
         "education": [
             {
                 "name": "Study",
-                "icon": "fa-book-reader"
+                "icon": "book-reader"
             },
             {
                 "name": "Assignment",
-                "icon": "fa-file-alt"
+                "icon": "file-alt"
             },
             {
                 "name": "Lecture",
-                "icon": "fa-chalkboard-teacher"
+                "icon": "chalkboard-teacher"
             },
             {
                 "name": "Library",
-                "icon": "fa-university"
+                "icon": "library"
             }
         ],
         "finance": [
             {
                 "name": "Bill Payment",
-                "icon": "fa-money-check-alt"
+                "icon": "money-check-alt"
             },
             {
                 "name": "Budgeting",
-                "icon": "fa-wallet"
+                "icon": "wallet"
             },
             {
                 "name": "Investment",
-                "icon": "fa-chart-pie"
+                "icon": "chart-pie"
             }
         ],
         "wellbeing": [
-            {
-                "name": "Self-care",
-                "icon": "fa-heart"
-            },
-            {
-                "name": "Mental Health",
-                "icon": "fa-brain"
-            },
-            {
-                "name": "Relaxation",
-                "icon": "fa-coffee"
-            }
+          {
+            "name": "Self-care",
+            "icon": "heart"
+          },
+          {
+            "name": "Mental Health",
+            "icon": "brain"
+          },
+          {
+            "name": "Relaxation",
+            "icon": "coffee"
+          },
+          {
+            "name": "Water",
+            "icon": "water"
+          }
         ]
     }
 }

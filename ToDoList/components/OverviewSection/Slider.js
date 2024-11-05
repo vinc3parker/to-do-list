@@ -3,8 +3,8 @@ import React, { useRef } from 'react';
 import SliderCard from './SliderCard';
 
 const { width } = Dimensions.get('window');
-const cardWidth = width * 0.7;
-const cardMargin = 10;
+const cardWidth = width * 0.8;
+const cardMargin = 5;
 const totalCardWidth = cardWidth + cardMargin * 2;
 
 const Cards = [
@@ -45,37 +45,39 @@ const Slider = () => {
         const contentOffsetX = event.nativeEvent.contentOffset.x;
         const index = Math.round(contentOffsetX / totalCardWidth);
         flatListRef.current.scrollToOffset({
-            offset: index * totalCardWidth,
+            offset: (index * totalCardWidth) + 0.075 * totalCardWidth,
             animated: true,
         });
     };
 
     return (
-        <Animated.FlatList
-            ref={flatListRef}
-            data={Cards}
-            horizontal
-            snapToAlignment="center"
-            showsHorizontalScrollIndicator={false}
-            decelerationRate="fast"
-            snapToInterval={totalCardWidth}
-            onMomentumScrollEnd={handleScrollEnd}
-            onScroll={Animated.event(
-                [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-                { useNativeDriver: true }
-            )}
-            scrollEventThrottle={16}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
-            contentContainerStyle={{ paddingHorizontal: (width - cardWidth) / 2 - cardMargin }}
-            style={styles.slider}
-            initialScrollIndex={initialScrollIndex}
-            getItemLayout={(data, index) => ({
-                length: totalCardWidth,
-                offset: totalCardWidth * index,
-                index,
-            })}
-        />
+      <Animated.FlatList
+        ref={flatListRef}
+        data={Cards}
+        horizontal
+        snapToAlignment="center"
+        showsHorizontalScrollIndicator={false}
+        decelerationRate="0.05"
+        snapToInterval={totalCardWidth}
+        onMomentumScrollEnd={handleScrollEnd}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          { useNativeDriver: true }
+        )}
+        scrollEventThrottle={8}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={{
+          paddingHorizontal: (width - cardWidth) / 2 - cardMargin,
+        }}
+        style={styles.slider}
+        initialScrollIndex={initialScrollIndex}
+        getItemLayout={(data, index) => ({
+          length: totalCardWidth,
+          offset: totalCardWidth * index,
+          index,
+        })}
+      />
     );
 };
 
